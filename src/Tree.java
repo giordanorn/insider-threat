@@ -4,30 +4,25 @@ public class Tree {
 	private Tree leftTree;
 	private Tree rightTree;
 	
+	
+	
+	
+	/*
+	 * Construtor
+	 */
 	public Tree(){
 		this.root = null;
 		this.leftTree = null;
 		this.rightTree = null;
 	}
 	
-	
-	public void setRightTree(Tree rightTree) {
-		this.rightTree = rightTree;
-	}
-	
-	public void setLeftTree(Tree leftTree) {
-		this.leftTree = leftTree;
-	}
-	
-	public void setRoot(No root) {
-			this.root = root;
-	}
-	
+	/*
+	 * Insere um usuário no nó root
+	 */
 	public void insertUser( User user ) {
 		No no = new No(user);
 		this.insert(no);
 	}
-
 	private void insert(No no) {
 		if ( this.root == null ) {
 			this.setRoot(no);
@@ -46,25 +41,27 @@ public class Tree {
 		}
 	}
 	
-	// faltando implementar a busca // Exemplo de ID: ZKH0388, tá assim nos arquivos
-	public User search(String id) {
-		return this.search(id,this);
+	/*
+	 * Busca o usuário pela ID e o retorna
+	 */
+	public User searchById(String id) {
+		return this.searchById(id,this);
 	}
-	private User search(String id, Tree tree) {
-		if ( tree.leftTree == null && tree.rightTree == null ) {
-			return null;
+	private User searchById(String id, Tree tree) {
+		if ( id.equals( tree.getUserId()) ) {
+			return tree.getUser();
 		} else {
-			if ( id.equals( tree.getUserId())) {
-				return tree.getUser();
+			if ( tree.leftTree == null && tree.rightTree == null ) {
+				return null;
 			} else if ( id.compareTo( tree.getUserId() ) > 0) {
-				return search(id, tree.rightTree);
+				return searchById(id, tree.rightTree);
 			} else if ( id.compareTo( tree.getUserId() ) < 0) {
-				return search(id, tree.leftTree);
+				return searchById(id, tree.leftTree);
+			} else {
+				return null;
 			}
-			return null;
 		}
 	}
-	
 	
 	/*
 	 * Imprime a árvore no console pelo nome do usuário
@@ -107,12 +104,16 @@ public class Tree {
     
     
     /*
-     * Getters
+     * Getters e Setters
      */
-    private User getUser(){return this.root.getUser();}
-    private String getUserName(){return this.root.getUser().getName();}
-    private String getUserId(){return this.root.getUser().getId();}
-    public String getUserDomain(){return this.root.getUser().getDomain();}
-    public String getUserEmail(){return this.root.getUser().getEmail();}
-    public String getUserRole(){return this.root.getUser().getRole();}
+    private User getUser() {return this.root.getUser();}
+    private String getUserName() {return this.root.getUser().getName();}
+    private String getUserId() {return this.root.getUser().getId();}
+    public String getUserDomain() {return this.root.getUser().getDomain();}
+    public String getUserEmail() {return this.root.getUser().getEmail();}
+    public String getUserRole() {return this.root.getUser().getRole();}
+    
+    public void setRightTree(Tree rightTree) {this.rightTree = rightTree;}
+	public void setLeftTree(Tree leftTree) {this.leftTree = leftTree;}
+	public void setRoot(No root) {this.root = root;}
 }
