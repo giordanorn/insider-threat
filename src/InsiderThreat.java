@@ -8,13 +8,20 @@ public class InsiderThreat {
 	private Tree users;
 	
 	public static void main (String[] args) {
-		InsiderThreat it =  new InsiderThreat();
+		InsiderThreat it = new InsiderThreat();
 		 
 		it.readUsersFile("ldap.csv");
 		it.readLogFile("logon-sumarizado.csv");
 		it.readLogFile("http-sumarizado.csv");
 		it.readLogFile("device.csv");
 		
+		/*
+		User user = it.users.searchById("AJC0266");
+		user.printUser();
+		
+		Tree technicians = it.users.searchByRole("Technician");
+		engineers.printUsers();
+		*/
 	}
 	
 	/*

@@ -28,12 +28,6 @@ public class User {
 		this.histogram.add(h);
 	}
 	
-	public void printHistogram() {
-		for(Histogram h : this.histogram) {
-			h.print();
-		}
-	}
-	
 	public void printUser() {
 		System.out.println("--------------User-------------");
 		System.out.println("Nome: " + this.getName() );
@@ -45,6 +39,11 @@ public class User {
 		this.printHistogram();
 	}
 	
+	public void printHistogram() {
+		for(Histogram h : this.histogram) {
+			h.print();
+		}
+	}
 	
 	/*
 	 * Getters
